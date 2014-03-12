@@ -36,14 +36,388 @@
 //				display: none
 // ## fonts 
 // Save fonts to /css/fonts, after that write (eot, woff, ttf):
-// +font(book, cytiapro-black-webfont)  
-// =book
-// 	font-family: "book",arial,sans-serif 
++font(PFDinReg, pfdintextcondpro-regular)  
+=reg
+	font-family: "PFDinReg", Arial, sans-serif 
++font(PFDinBold, pfdintextcondpro-bold)
+=med
+	font-family: "PFDinMed", Arial, sans-serif 
++font(PFDinMed, pfdintextcondpro-medium)  
+=bold
+	font-family: "PFDinBold", Arial, sans-serif 
++font(PFFuel, pffuelpro-reg)  
+=font
+	font-family: "PFFuel", Arial, sans-serif 
+
+$red: #DF1E1A
 	
 body
-	font-size: 12px 
-	font-family: Arial, sans-serif 
+	+reg
+	font-size: 13px 
 	line-height: 1.4
+	//-webkit-font-smoothing: antialiased
 
 
 // common blocks
+.wrapper
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	min-height: 650px 
+.sidebar
+	position: absolute
+	top: 0
+	left: 0
+	width: 230px
+	z-index: 4 
+	&:hover
+		bottom: 0
+		.menu
+			left: -140px
+		.sidebar__in
+			left: 0
+.section
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	background-image: url(../img/bg.jpg) 
+	+cover
+	z-index: 2 
+.menu
+	position: absolute
+	top: 0
+	left: 0
+	width: 140px
+	height: 140px
+	background: #df1e1a 
+	border-right: #E85A57 1px solid 
+	+tr(left .2s linear)
+.menu__ico
+	position: absolute
+	top: 0
+	right: -71px
+	bottom: 0
+	width: 70px
+	background: $red
+	i
+		display: block
+		margin: 56px 0 0 20px
+		+s(menu-ico)
+	&:after
+		content: ""
+		position: absolute
+		top: 0
+		right: -20px
+		+arr(20,140,$red,r) 
+.menu__logo
+	display: block
+	margin: 13px 0 0 37px
+	+s(logo) 
+.sidebar__in
+	position: absolute
+	top: 0
+	left: -200px
+	width: 200px
+	bottom: 0
+	background-image: url(../img/sidebar-bg.jpg) 
+	+cover
+.menu, .sidebar__in
+	+tr(left .2s ease-out)
+.logo
+	margin: 15px 0 30px
+	text-align: center
+.logo__ico
+	display: inline-block
+	+s(logo-b)
+.begin
+	position: relative
+	display: block
+	margin-bottom: 35px
+	padding: 16px 0 12px
+	text-decoration: none
+	+bold
+	font-size: 20px
+	color: #FFF 
+	text-align: center
+	text-transform: uppercase
+	&:before, &:after
+		content: ""
+		position: absolute
+		left: 50%
+		width: 70px
+		height: 1px
+		margin-left: -35px
+		background: rgba(255,255,255,.2) 
+	&:before
+		top: 0
+	&:after	
+		bottom: 0
+.nav
+	position: relative
+	padding: 0 0 17px 20px
+	font-size: 0
+	&:after
+		content: ""
+		position: absolute
+		left: 50%
+		bottom: 0
+		width: 70px
+		height: 1px
+		margin-left: -35px
+		background: rgba(255,255,255,.2)
+	li
+		margin-bottom: 13px
+	a
+		display: block
+		color: #FFF 
+		&.is-active
+			i
+				background: #FFF
+				color: $red  
+	i, span
+		display: inline-block
+		+bold
+		vertical-align: middle
+	i
+		width: 35px
+		height: 35px
+		margin-right: 12px
+		background: $red 
+		border-radius: 50%
+		text-align: center
+		line-height: 35px
+		font-style: normal
+		font-size: 20px
+	span
+		position: relative
+		top: 2px
+		font-size: 13px
+		text-transform: uppercase
+		line-height: 1.2
+.sidebar__down
+	position: absolute
+	bottom: 15px
+	left: 0
+	right: 0
+	text-align: center
+.phone
+	margin-bottom: 10px
+.phone__title
+	color: #919396
+	line-height: 1
+.phone__in
+	+bold
+	font-size: 18px
+	color: #fff
+	span
+		color: $red
+.site
+	a
+		color: #FFF
+		text-decoration: underline
+		text-transform: uppercase 
+.footer
+	position: absolute
+	right: 35px
+	bottom: 20px
+.copyright, .social
+	display: inline-block
+	vertical-align: middle
+.copyright
+	margin-right: 15px
+	color: #fff
+	line-height: 1.2
+	a
+		color: #FFF701
+		text-decoration: underline 
+.social
+	font-size: 0
+	li
+		display: inline-block
+		margin-left: 8px
+		vertical-align: top
+		&:first-child
+			margin: 0
+	a
+		display: block
+.social__ig
+	+s(social-ig)
+.social__vk
+	+s(social-vk)
+.social__tw
+	+s(social-tw)
+.social__fb
+	+s(social-fb)
+
+
+
+
+
+.sex
+	display: table
+	width: 700px
+	margin: 0 auto
+.sex__row
+	display: table-row
+.sex__item
+	display: table-cell
+	vertical-align: middle
+	text-align: center
+	i
+		display: inline-block
+.sex__man
+	+s(man1)
+.sex__woman
+	+s(man2) 
+.sex__parent
+	+s(man3)
+.sex__guest
+	+s(man4)
+.sex__btn
+	margin-top: -30px
+
+	
+
+.btn
+	display: inline-block
+	+s(btn)
+	text-align: center
+	line-height: 130px
+	span
+		display: inline-block
+		+med
+		vertical-align: middle
+		line-height: 1
+		text-transform: uppercase
+		font-size: 25px
+		color: #000
+		text-decoration: none 
+		letter-spacing: -1px
+		-webkit-transform: rotate(-5deg)
+		-moz-transform: rotate(-5deg)
+		-ms-transform: rotate(-5deg)
+.btn_big
+	+s(btn-big)
+	line-height: 160px
+	span
+		font-size: 20px
+
+
+
+.choicer
+	position: relative
+	display: block
+	margin-bottom: 10px
+	padding-left: 40px
+	input
+		position: absolute
+		top: 50%
+		left: 8px
+		margin-top: -7px
+		opacity: 0 
+		z-index: 2 
+		&:checked + .choicer__text
+			&:after
+				content: ""
+				position: absolute
+				top: -2px
+				left: 3px
+				+s(choicer-ok)
+.choicer__text
+	display: block
+	+med
+	font-size: 24px
+	line-height: 1
+	&:before
+		content: ""
+		position: absolute
+		top: 0
+		left: 0
+		width: 20px
+		height: 20px
+		background: #F7F002
+		border-radius: 50%
+		border: 2px solid #000 
+.choicer__bg
+	position: relative
+	display: inline-block
+	span
+		position: relative
+		display: block
+		z-index: 4 
+	i
+		position: absolute
+		top: 50%
+		left: 0
+		right: 0
+		height: 22px
+		margin-top: -8px
+		background: url(../img/icons/choicer-bg-middle.png) repeat-x 0 0
+		z-index: 2 
+		&:before, &:after
+			content: ""
+			position: absolute
+			top: 0
+		&:before
+			content: ""
+			left: -10px
+			+s(choicer-bg-left)
+		&:after
+			content: ""
+			right: -10px
+			+s(choicer-bg-right)
+.choicer__info
+	display: block
+	padding-top: 8px
+	font-style: italic
+	font-size: 16px
+
+
+
+
+.field
+	display: block
+.field__el
+	input
+		width: 100%
+		height: 30px
+		padding: 0 5px
+		border: 3px solid #000
+		+box
+		+med
+		font-size: 16px
+		font-style: italic
+.field__label
+	font-style: italic
+	+med
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

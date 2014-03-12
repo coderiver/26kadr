@@ -1,0 +1,287 @@
+// Normally mainpage styles
+.step
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	opacity: 0
+	&.is-active
+		opacity: 1 
+		z-index: 10 
+.step__in
+	position: absolute
+	top: 50%
+	left: 50%
+	width: 1000px
+	height: 600px
+	margin: -300px 0 0 -500px 
+.step__ask
+	position: absolute
+	top: 20px
+	left: 50%
+	margin-left: -360px
+	+s(step0-ask)
+.step__school
+	position: absolute
+	top: 220px
+	left: 50%
+	width: 841px
+	height: 151px
+	margin-left: -420px  
+	background: url(../img/step-0-school.png) no-repeat 0 0 
+.step__go
+	position: absolute
+	top: 365px
+	left: 50%
+	margin-left: -90px
+	+s(step-0-go)
+.step__title
+	margin-bottom: 10px
+	text-align: center
+.step__title-counter, .step__title-text
+	display: inline-block
+	vertical-align: middle
+.step__title-counter
+	position: relative
+	margin-right: 30px
+	+s(step-counter)
+	-webkit-transform: rotate(-5deg)
+	-moz-transform: rotate(-5deg)
+	-ms-transform: rotate(-5deg)
+	color: #fff701 
+	font-size: 13px
+	line-height: 52px
+	text-align: center
+.step__form
+	+clr
+.step__form-column
+	float: left
+.step__description
+	position: relative
+	margin-bottom: 30px
+	text-align: center
+	+med
+	font-size: 20px
+	font-style: italic
+	line-height: 1.2
+	p
+		position: relative
+		display: inline-block
+		z-index: 2 
+	span
+		position: relative
+		display: inline-block
+		height: 21px
+		padding: 0 2px
+		background: url(../img/icons/step2-text-middle.png) repeat-x 0 0
+		line-height: 17px
+		&:before, &:after
+			content: ""
+			position: absolute
+			top: 0
+		&:before
+			left: -25px
+			+s(step2-text-left)
+		&:after
+			right: -22px
+			+s(step2-text-right)				
+.step__line
+	margin-bottom: 40px
+	text-align: center
+	font-size: 0
+	i
+		display: inline-block
+		width: 490px
+		height: 1px
+		background: #8CB188
+		box-shadow: 0 0 0 1px rgba(140,177,136,.6)
+.step__next
+	padding-top: 50px
+	text-align: center 
+
+// 0
+.step_0
+	.step__title
+		position: absolute
+		top: 45px
+		left: 50%
+		margin-left: -100px
+		+s(step-0-title)
+	
+// 1
+.step_1
+	.step__title-text
+		+s(step1-title)
+	.step__text 
+		padding: 15px 0 25px
+		font-size: 0
+		text-align: center
+		li
+			display: inline-block
+			padding: 0 15px
+			vertical-align: middle
+			font-size: 16px
+			text-align: left
+			line-height: 1.2
+			+med
+			&:first-child
+				text-align: right
+				font-size: 18px
+				text-transform: uppercase
+				+bold
+
+// 2
+.step_2
+	.step__title-text
+		+s(step2-title)
+	.step__form
+		width: 600px
+		margin: 0 auto
+	.step__form-column
+		width: 200px
+	.choicer
+		margin: 0
+		input
+			&:checked + .choicer__text
+				&:after
+					top: 16px
+		.choicer__text
+			&:before
+				top: 18px
+	.choicer_mod
+		margin-top: 15px
+		.choicer__text
+			&:before
+				top: 4px
+		input
+			&:checked + .choicer__text
+				&:after
+					top: 2px
+	.choicer__text
+		&:before
+			top: 4px
+		strong
+			margin-right: 10px
+			letter-spacing: -7px 
+			font-size: 50px
+		span
+			font-size: 32px 
+			
+// 3
+.step_3
+	.step__title-text
+		+s(step3-title)
+	.step__description
+		font-size: 26px
+	.step__form-column
+		width: 30%
+		margin-left: 5%
+		&:first-child
+			margin: 0
+
+// 4
+.step_4
+	.step__title-text
+		+s(step4-title)
+	.step__form-column
+		width: 35%
+		margin-left: 5%
+		&:first-child
+			width: 20%
+			margin: 0
+
+// 5
+.step_5
+	.step__in
+		width: 50%
+		left: 50%
+		margin: -300px 0 0 0 
+	.step__title, .step__description, .step__line, .step__next
+		text-align: left
+	.step__title
+		padding-left: 40px
+	.step__description, .step__line
+		padding-left: 90px
+	.step__title-text
+		+s(step5-title)
+	.step__form, .step__next
+		padding-left: 130px
+	.step__form-column
+		width: 100%
+	.choicer
+		margin-bottom: 30px
+	.map
+		position: absolute
+		top: 0
+		left: 0
+		width: 50%
+		bottom: 0
+		border-right: 6px solid #000 
+		background: #FFF
+	.map__form
+		position: absolute
+		left: 90px
+		right: 90px
+		bottom: 40px 
+		.field
+			overflow: hidden
+	.map__btn
+		float: right
+		height: 24px
+		padding: 0 25px
+		margin: 4px 0 0 10px 
+		background: #e5d507 
+		+med
+		font-style: italic
+		font-size: 16px
+		color: #000 
+	
+// 6
+.step_6
+	.step__title-text
+		+s(step6-title)
+.step_6, .step_7
+	.step__description
+		font-size: 34px
+		font-style: italic
+		em
+			display: block
+			line-height: 1
+			font-size: 24px
+			
+// 7
+.step_7
+	.step__title-text
+		+s(step7-title)
+	.step__description
+		a
+			position: relative
+			top: -2px
+			display: inline-block
+			padding: 0 12px 2px
+			margin-left: 10px
+			background: #E5D607 
+			font-size: 16px
+			text-decoration: none
+			color: #000 
+			font-style: italic 
+	.step__form
+		width: 460px
+		margin: 0 auto 
+	.field
+		margin-bottom: 15px
+	.field__label,
+	.field__el
+		display: inline-block
+		vertical-align: middle
+	.field__label
+		width: 60px
+		margin-right: 15px
+		text-align: right
+
+
+
+
+
+
