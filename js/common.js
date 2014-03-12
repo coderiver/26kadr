@@ -6,7 +6,9 @@ function nav () {
 	btn.on('click', function(){
 		var el = $(this).attr('href');
 		item.removeClass('is-active');
+		btn.removeClass('is-active');
 		$('#'+el).addClass('is-active');
+		$(this).addClass('is-active');
 		return false;
 	});
 }
