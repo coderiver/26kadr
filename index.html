@@ -9,6 +9,18 @@
 	<!--[if IE]><script src="js/html5shiv.js"></script><![endif]-->
 	<script src="js/jquery.js"></script>
 	<script src="js/common.js"></script>
+	<script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+  <script>
+  	ymaps.ready(map_init);
+    var myMap;
+    function map_init() {
+      myMap = new ymaps.Map('map-container', {
+        center: [55.753676, 37.619899],
+        zoom: 11,
+        behaviors: ['default', 'scrollZoom']
+      });
+    }
+  </script>
 </head>
 <body>
 <div class="wrapper">
@@ -321,16 +333,16 @@
 		</div>
 		<!-- 5 -->
 		<div id="step_5" class="step step_5">
-			<div class="map">
-				<div class="map__form">
-					<button class="map__btn">Ввести</button>
-					<div class="field">
-						<div class="field__el">
-							<input type="text" placeholder="введи свой адрес">
-						</div>
-					</div>
-				</div>
-			</div>
+			<div class="map" id="map-container">
+        <div class="map__form">
+          <button class="map__btn">Ввести</button>
+          <div class="field">
+            <div class="field__el">
+              <input type="text" placeholder="введи свой адрес">
+            </div>
+          </div>
+        </div>
+    	</div>
 			<div class="step__in">
 				<div class="step__title">
 					<div class="step__title-counter">шаг 5</div>

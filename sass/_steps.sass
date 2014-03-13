@@ -37,7 +37,7 @@
 			.step__in
 				left: 50%
 			.map
-				width: 50%
+				left: 0
 		.step__school
 			margin-left: -420px
 		.step__ask
@@ -281,18 +281,19 @@
 	.map
 		position: absolute
 		top: 0
-		left: 0
-		width: 0
+		left: -50%
+		width: 50%
 		bottom: 0
 		border-right: 6px solid #000 
 		background: #FFF
-		+tr(width .2s linear)
+		+tr(left .2s linear)
 		overflow: hidden
 	.map__form
 		position: absolute
 		left: 90px
 		right: 90px
 		bottom: 40px 
+		z-index: 20 
 		.field
 			overflow: hidden
 	.map__btn
