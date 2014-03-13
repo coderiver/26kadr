@@ -66,14 +66,15 @@ body
 	right: 0
 	bottom: 0
 	min-height: 650px 
+	overflow: hidden
 .sidebar
 	position: absolute
 	top: 0
 	left: 0
-	width: 230px
+	bottom: 0
 	z-index: 4 
 	&:hover
-		bottom: 0
+		width: 230px
 		.menu
 			left: -140px
 		.sidebar__in
@@ -90,7 +91,7 @@ body
 .menu
 	position: absolute
 	top: 0
-	left: 0
+	left: 0 
 	width: 140px
 	height: 140px
 	background: #df1e1a 
@@ -114,8 +115,9 @@ body
 		right: -20px
 		+arr(20,140,$red,r) 
 .menu__logo
-	display: block
-	margin: 13px 0 0 37px
+	position: absolute
+	top: 13px
+	left: 37px
 	+s(logo) 
 .sidebar__in
 	position: absolute
@@ -258,17 +260,24 @@ body
 
 
 .sex
-	display: table
-	width: 700px
 	margin: 0 auto
 .sex__row
-	display: table-row
+	text-align: center
 .sex__item
-	display: table-cell
+	position: relative
+	left: 500px
+	display: inline-block
+	width: 170px
 	vertical-align: middle
 	text-align: center
 	i
 		display: inline-block
+	& + .sex__item
+		+transition-delay(.1s)
+	& + .sex__item + .sex__item
+		+transition-delay(.2s)
+	& + .sex__item + .sex__item + .sex__item
+		+transition-delay(.3s)
 .sex__man
 	+s(man1)
 .sex__woman
