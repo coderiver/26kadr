@@ -105,7 +105,7 @@ body { font-family: "PFDinReg", Arial, sans-serif; font-size: 13px; line-height:
 
 .sex__item { position: relative; left: 500px; display: inline-block; width: 170px; vertical-align: middle; text-align: center; }
 .sex__item i { display: inline-block; -webkit-transform-origin: 50% 100%; -moz-transform-origin: 50% 100%; -ms-transform-origin: 50% 100%; -o-transform-origin: 50% 100%; transform-origin: 50% 100%; }
-.sex__item:hover i { -webkit-animation: sexrotate 0.2s linear infinite; -moz-animation: sexrotate 0.2s linear infinite; -ms-animation: sexrotate 0.2s linear infinite; -o-animation: sexrotate 0.2s linear infinite; animation: sexrotate 0.2s linear infinite; }
+.sex__item:hover i { -webkit-animation: sexrotate 0.5s linear 0.8; -moz-animation: sexrotate 0.5s linear 0.8; -ms-animation: sexrotate 0.5s linear 0.8; -o-animation: sexrotate 0.5s linear 0.8; animation: sexrotate 0.5s linear 0.8; }
 .sex__item + .sex__item { -webkit-transition-delay: 0.1s; -moz-transition-delay: 0.1s; -o-transition-delay: 0.1s; transition-delay: 0.1s; }
 .sex__item + .sex__item + .sex__item { -webkit-transition-delay: 0.2s; -moz-transition-delay: 0.2s; -o-transition-delay: 0.2s; transition-delay: 0.2s; }
 .sex__item + .sex__item + .sex__item + .sex__item { -webkit-transition-delay: 0.3s; -moz-transition-delay: 0.3s; -o-transition-delay: 0.3s; transition-delay: 0.3s; }
