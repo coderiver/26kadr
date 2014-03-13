@@ -147,6 +147,28 @@ body { font-family: "PFDinReg", Arial, sans-serif; font-size: 13px; line-height:
 
 .field__label { font-style: italic; font-family: "PFDinMed", Arial, sans-serif; }
 
+.btn-animation:hover { -webkit-animation: rotate 0.2s linear infinite; -moz-animation: rotate 0.2s linear infinite; -ms-animation: rotate 0.2s linear infinite; -o-animation: rotate 0.2s linear infinite; animation: rotate 0.2s linear infinite; }
+
+@-moz-keyframes rotate { 0% { -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); -ms-transform: rotate(5deg); }
+  50% { -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); -ms-transform: rotate(-5deg); }
+  100% { -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); -ms-transform: rotate(5deg); } }
+
+@-webkit-keyframes rotate { 0% { -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); -ms-transform: rotate(5deg); }
+  50% { -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); -ms-transform: rotate(-5deg); }
+  100% { -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); -ms-transform: rotate(5deg); } }
+
+@-o-keyframes rotate { 0% { -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); -ms-transform: rotate(5deg); }
+  50% { -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); -ms-transform: rotate(-5deg); }
+  100% { -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); -ms-transform: rotate(5deg); } }
+
+@-ms-keyframes rotate { 0% { -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); -ms-transform: rotate(5deg); }
+  50% { -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); -ms-transform: rotate(-5deg); }
+  100% { -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); -ms-transform: rotate(5deg); } }
+
+@keyframes rotate { 0% { -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); -ms-transform: rotate(5deg); }
+  50% { -webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg); -ms-transform: rotate(-5deg); }
+  100% { -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); -ms-transform: rotate(5deg); } }
+
 .l { *zoom: 1; }
 .l:after { content: " "; display: table; clear: both; }
 .l .l-col1 { float: left; width: 20%; }
