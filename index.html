@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <title>Куда пойти учиться после ШКОЛЫ?</title>
     <meta name="viewport" content="initial-scale=1"/>
-    <link rel="stylesheet" media="screen" href="css/screen.css?v=1" >
+    <link rel="stylesheet" media="screen" href="css/screen.css?v=3" >
     <!--[if IE]><script src="js/html5shiv.js"></script><![endif]-->
     <script src="js/jquery.js"></script>
     <script src="js/sammy-0.7.5.min.js"></script>
     <script src="js/underscore-min.js"></script>
     <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=3"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -74,7 +74,7 @@
                         <div class="btn"><span>парень</span></div>
                     </div>
                 </a>
-                <a class="sex__item js-next" href="#/step/2" onclick="choose_who('girl');">
+                <a class="sex__item js-next" href="#/step/2" onclick="return false;">
                     <i class="sex__woman"></i>
                     <div class="sex__btn btn-animation">
                         <div class="btn"><span>девушка</span></div>
@@ -228,7 +228,7 @@
             <div class="step__title-counter">шаг 6</div>
             <div class="step__title-text"></div>
         </div>
-        <div class="step__description">Мастера жилищно-коммунального хозяйства<br><em>в отделение колледжа на Кожуховской</em></div>
+        <div class="step__description" id="speciality-sp-result"></div>
         <div class="step__line"><i></i></div>
         <div class="step__next">
             <a class="btn btn_big js-next btn-animation" href="#/step/7"><span>Записаться на<br>день открытых<br>дверей</span></a>
@@ -244,7 +244,7 @@
             <div class="step__title-counter">шаг 7</div>
             <div class="step__title-text"></div>
         </div>
-        <div class="step__description">и запишись на день открытых дверей<br><em>в отделении колледжа на Кожуховской (21 марта, 28 марта, 5 апреля) <a href="#">все даты</a></em></div>
+        <div class="step__description" id="sp-opendays-result"></div>
         <div class="step__line"><i></i></div>
         <div class="step__form">
             <label class="field">

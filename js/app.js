@@ -4,7 +4,7 @@ var myMap;
 
 map_route = function (sp_number, sp) {
 
-    console.log('map_route:', sp_number);
+    // console.log('map_route:', sp_number);
 
     myMap.geoObjects.add(new ymaps.Placemark(sp.center, {}, {
         "iconImageHref": "http://p26.rocketcdn.ru/map/i/sp-" + sp_number + ".png",
@@ -46,7 +46,7 @@ var app = $.sammy(function () {
         '_class': '9',
         'directions': [],
         'specialties': [],
-        'sp':null
+        'sp': 2
     };
     window.user_choose = user_choose;
 
@@ -59,63 +59,72 @@ var app = $.sammy(function () {
             "center": [
                 55.66865,
                 37.769882
-            ]
+            ],
+            'opendays':['22 марта', '23 марта', '30 марта']
         },
         2: {
             'title': '#2: на ул.Кожуховская',
             "center": [
                 55.704463,
                 37.67961
-            ]
+            ],
+            'opendays':['21 марта', '28 марта', '5 апреля']
         },
         3: {
             'title': '#3: на ул.Фрезерная',
             "center": [
                 55.739818,
                 37.741387
-            ]
+            ],
+            'opendays':['15 марта', '17 марта', '5 мая']
         },
         4: {
             'title': '#4: на ул.Шкулева',
             "center": [
                 55.6943,
                 37.75134
-            ]
+            ],
+            'opendays':['13 марта', '14 марта', '23 марта']
         },
         5: {
             'title': '#5: на ул.Карачаровская',
             "center": [
                 55.736367,
                 37.757494
-            ]
+            ],
+            'opendays':['17 марта', '18 марта', '2 апреля']
         },
         6: {
             'title': '#6: на ул.Трофимова',
             "center": [
                 55.70386,
                 37.679844
-            ]
+            ],
+            'opendays':['16 марта', '19 марта', '22 марта']
         },
         7: {
             'title': '#7: на ул.Красноказарменная',
             "center": [
                 55.741227,
                 37.705778
-            ]
+            ],
+            'opendays':['15 марта', '22 марта', '10 апреля']
         },
         8: {
             'title': '#8: на ул.Подъемная',
             "center": [
                 55.756964,
                 37.697657
-            ]
+            ],
+            'opendays':['17 марта', '24 марта', '25 марта']
         },
         9: {
             'title': '#9: на шоссе Энтузиастов',
             "center": [
                 55.753448,
                 37.72467
-            ]
+            ],
+            'opendays':['15 марта', '19 марта', '28 марта']
         }
     };
 
@@ -288,6 +297,13 @@ var app = $.sammy(function () {
         });
     };
 
+    // step 5
+    var init_choose_sp = function () {
+        $('#form-choose-sp input[type="radio"]').on('click', function () {
+            user_choose.sp = $(this).val();
+        });
+    };
+
 //    var init_map = function(){
 //        if ( ! _.undefined(window.appMap)){
 //            return;
@@ -301,11 +317,11 @@ var app = $.sammy(function () {
 //    }
 
     var step2 = function () {
-        console.log('step2:');
+        // console.log('step2:');
     };
 
     var step3 = function () {
-        console.log('step3:');
+        // console.log('step3:');
 
         //user_choose.directions = [];
 
@@ -336,7 +352,7 @@ var app = $.sammy(function () {
     };
 
     var step4 = function () {
-        console.log('step4:');
+        // console.log('step4:');
 
         //user_choose.specialties = [];
 
@@ -375,7 +391,7 @@ var app = $.sammy(function () {
     };
 
     var step5 = function () {
-        console.log('step5:');
+        // console.log('step5:');
 
         var struct_deps = [];
         _.each(user_choose.specialties, function (speciality_id) {
@@ -402,11 +418,46 @@ var app = $.sammy(function () {
         });
 
         $container.append(html);
+
+        init_choose_sp();
     };
 
-    var step6 = function(){
-        console.log('step6:');
+    var step6 = function () {
+        //console.log('step6:');
+        var $container = $('#speciality-sp-result');
+
+        var specialties = [];
+        _.each(user_choose.specialties, function (speciality_id) {
+            if(_.contains(_data.specialties_to_sp[speciality_id], parseInt(user_choose.sp))){
+                specialties.push(speciality_id);
+            }
+        });
+        specialties = _.unique(specialties);
+
+        //console.log('ddd:', specialties);
+
+        $container.empty();
+
+        var total = specialties.length;
+
+        _.each(specialties, function(id, i){
+            $container.append(_specialties[id]+'<br>');
+            if ((i+1) < total){
+                $container.append('<em>или</em>');
+            }
+        });
+
+        $container.append('<em>в отделение колледжа '+_struct_deps[user_choose.sp].title+'</em>');
     };
+
+    var step7 = function(){
+        var $container = $('#sp-opendays-result');
+        $container.empty();
+
+        var opendays = _struct_deps[user_choose.sp].opendays.join(', ');
+
+        $container.append('и запишись на день открытых дверей<br><em>в отделении колледжа '+_struct_deps[user_choose.sp].title+' ('+opendays+') <a href="#">все даты</a></em>');
+    }
 
 
     //this.debug = true;
@@ -435,6 +486,12 @@ var app = $.sammy(function () {
             case '5':
                 step5();
                 menu_step = 4;
+                break;
+            case '6':
+                step6();
+                break;
+            case '7':
+                step7();
                 break;
         }
         $('#menu-step-' + menu_step).addClass('is-active');
