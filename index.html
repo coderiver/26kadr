@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <title>Куда пойти учиться после ШКОЛЫ?</title>
     <meta name="viewport" content="initial-scale=1"/>
-    <link rel="stylesheet" media="screen" href="css/screen.css?v=3" >
+    <link rel="stylesheet" media="screen" href="css/screen.css?v=4" >
     <!--[if IE]><script src="js/html5shiv.js"></script><![endif]-->
     <script src="js/jquery.js"></script>
     <script src="js/sammy-0.7.5.min.js"></script>
     <script src="js/underscore-min.js"></script>
     <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
-    <script src="js/app.js?v=3"></script>
+    <script src="js/data.js?v=4"></script>
+    <script src="js/app.js?v=4"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -30,10 +31,12 @@
         <nav class="nav" id="nav-steps">
             <ul>
                 <li><a class="js-next" href="#/step/1" id="menu-step-1"><i>1</i><span>представься</span></a></li>
-                <li><a class="js-next" href="#/step/3" id="menu-step-3"><i>2</i><span>Чем интересуешься?</span></a></li>
-                <li><a class="js-next" href="#/step/4" id="menu-step-4"><i>3</i><span>определись</span></a></li>
-                <li><a class="js-next" href="#/step/6" id="menu-step-6"><i>4</i><span>поступай</span></a></li>
-                <li><a class="js-next" href="#/step/7" id="menu-step-7"><i>5</i><span>Заполняй</span></a></li>
+                <li><a class="js-next" href="#/step/2" id="menu-step-2"><i>2</i><span>Укажи класс</span></a></li>
+                <li><a class="js-next" href="#/step/3" id="menu-step-3"><i>3</i><span>Чем интересуешься?</span></a></li>
+                <li><a class="js-next" href="#/step/4" id="menu-step-4"><i>4</i><span>определись</span></a></li>
+                <li><a class="js-next" href="#/step/5" id="menu-step-5"><i>5</i><span>Мы рядом</span></a></li>
+                <li><a class="js-next" href="#/step/6" id="menu-step-6"><i>6</i><span>поступай</span></a></li>
+                <li><a class="js-next" href="#/step/7" id="menu-step-7"><i>7</i><span>Заполняй</span></a></li>
             </ul>
         </nav>
         <div class="sidebar__down">
@@ -41,7 +44,7 @@
                 <div class="phone__title">приемная комиссия</div>
                 <div class="phone__in">499 <span>653 70 77</span></div>
             </div>
-            <div class="site"><a href="#">26kadr.ru</a></div>
+            <div class="site"><a href="http://26kadr.ru" target="_blank">26kadr.ru</a></div>
         </div>
     </div>
 </aside>
@@ -74,19 +77,19 @@
                         <div class="btn"><span>парень</span></div>
                     </div>
                 </a>
-                <a class="sex__item js-next" href="#/step/2" onclick="return false;">
+                <a class="sex__item js-next" href="#/step/2" onclick="choose_who('girl');">
                     <i class="sex__woman"></i>
                     <div class="sex__btn btn-animation">
                         <div class="btn"><span>девушка</span></div>
                     </div>
                 </a>
-                <a class="sex__item js-next" href="#/step/2" onclick="return false;">
+                <a class="sex__item js-next" href="#/step/2" onclick="choose_who('parent');">
                     <i class="sex__parent"></i>
                     <div class="sex__btn btn-animation">
                         <div class="btn"><span>родитель</span></div>
                     </div>
                 </a>
-                <a class="sex__item js-next" href="#/step/2" onclick="return false;">
+                <a class="sex__item js-next" href="#/step/2" onclick="choose_who('ufo');">
                     <i class="sex__guest"></i>
                     <div class="sex__btn btn-animation">
                         <div class="btn"><span>гость из космоса</span></div>
@@ -106,7 +109,7 @@
         <div class="step__description"><p>(эта информация необходима нам, чтобы подобрать</p><br><span>специальности подходящие именно тебе)</span></div>
         <div class="step__line"><i></i></div>
         <div class="step__form" id="form-choose-class">
-            <div class="step__form-column">
+            <!--<div class="step__form-column">
                 <label class="choicer">
                     <input type="radio" name="group" value="7">
 							<span class="choicer__text">
@@ -121,7 +124,7 @@
 								<span class="choicer__bg"><span>класс</span><i></i></span>
 							</span>
                 </label>
-            </div>
+            </div>-->
             <div class="step__form-column">
                 <label class="choicer">
                     <input type="radio" name="group" value="9">
@@ -130,6 +133,8 @@
 								<span class="choicer__bg"><span>класс</span><i></i></span>
 							</span>
                 </label>
+            </div>
+            <div class="step__form-column">
                 <label class="choicer">
                     <input type="radio" name="group" value="10">
 							<span class="choicer__text">
@@ -146,10 +151,12 @@
 								<span class="choicer__bg"><span>класс</span><i></i></span>
 							</span>
                 </label>
+
                 <label class="choicer choicer_mod">
-                    <input type="radio" name="group" value="others">
+                    <input type="radio" name="group" value="other">
 							<span class="choicer__text">
-								<span class="choicer__bg"><span>Другое</span><i></i></span>
+                                <strong></strong>
+								<span class="choicer__bg"><span>КРО</span><i></i></span>
 							</span>
                 </label>
             </div>
@@ -184,7 +191,7 @@
             <div class="step__title-text"></div>
         </div>
         <div class="step__line"><i></i></div>
-        <div class="step__form"  id="form-choose-specialties">
+        <div class="step__form"  id="form-choose-specialities">
 
         </div>
         <div class="step__next">
@@ -195,21 +202,24 @@
 <!-- 5 -->
 <div id="step_5" class="step step_5">
     <div class="map" id="map-container">
-        <div class="map__form">
+        <!--<div class="map__form">
             <button class="map__btn">Ввести</button>
             <div class="field">
                 <div class="field__el">
                     <input type="text" placeholder="введи свой адрес">
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
     <div class="step__in">
         <div class="step__title">
             <div class="step__title-counter">шаг 5</div>
             <div class="step__title-text"></div>
         </div>
-        <div class="step__description"><p>1.</p> <span>Укажи</span> <p>на карте свой адрес.</p><br><p>2.</p> <span>Выбери</span> <p>ближайшее подразделение нашего колледжа</p></div>
+        <div class="step__description">
+            <!--<p>1.</p> <span>Укажи</span> <p>на карте свой адрес.</p><br>-->
+            <!--<p>2.</p> --><span>Выбери</span> <p>ближайшее подразделение нашего колледжа</p>
+        </div>
         <div class="step__line"><i></i></div>
         <div class="step__form">
             <div class="step__form-column" id="form-choose-sp">
@@ -285,18 +295,18 @@
         </div>
 
         <div class="step__next">
-            <a class="btn btn_big  btn-animation" href="#/step/0"><span>До встречи!</span></a>
+            <a class="btn btn_big  btn-animation" href="#/step/0"><span>к началу!</span></a>
         </div>
     </div>
 </div>
 
 <footer class="footer">
-    <div class="copyright">© Колледж Архитектуры, Дизайна<br>и Реинжиниринга, 2014 | <a href="#">26kadr.ru</a></div>
+    <div class="copyright">© Колледж Архитектуры, Дизайна<br>и Реинжиниринга, 2014 | <a href="http://26kadr.ru" target="_blank">26kadr.ru</a></div>
     <ul class="social">
-        <li><a class="social__ig" href="#"></a></li>
-        <li><a class="social__vk" href="#"></a></li>
-        <li><a class="social__tw" href="#"></a></li>
-        <li><a class="social__fb" href="#"></a></li>
+        <li><a class="social__ig" href="http://instagram.com/26college" rel="nofollow" target="_blank"></a></li>
+        <li><a class="social__vk" href="http://vk.com/26college" rel="nofollow" target="_blank"></a></li>
+        <li><a class="social__tw" href="https://twitter.com/26_college" rel="nofollow" target="_blank"></a></li>
+        <li><a class="social__fb" href="https://www.facebook.com/college26" rel="nofollow" target="_blank"></a></li>
     </ul>
 </footer>
 </div>
