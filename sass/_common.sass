@@ -514,8 +514,8 @@ body
 
 
 .popup
-	display: none
-	position: absolute
+	//display: none
+	position: fixed
 	top: 0
 	left: 0
 	right: 0
@@ -544,8 +544,57 @@ body
 	display: inline-block
 .popup__title_calendar
 	+s(popup-title-calendar)
+.popup__title_final
+	+s(popup-title-final)
+.popup__line
+	padding: 40px 0 15px
+	text-align: center
+	font-size: 0
+	i
+		display: inline-block
+		width: 310px
+		height: 1px
+		background: #8CB188
+		box-shadow: 0 0 0 1px rgba(140,177,136,.6)
+.popup__text, .popup__text-sub
+	font-style: italic
+	color: #8cb188 
+.popup__text
+	margin-bottom: 5px
+	font-size: 20px
+	line-height: 1.2
+.popup__text-sub
+	margin-bottom: 50px
+	font-size: 16px
+.popup__link
+	text-align: center
+	a
+		display: inline-block
+		padding: 0 5px
+		background: #fff701 
+		color: #000
+		text-decoration: none
+		font-size: 16px
+		font-style: italic 
 
 
+
+.instrument
+	position: absolute
+	right: -150px
+	bottom: -100px
+	opacity: 0
+	+tr(all .2s linear) 
+.instrument_1
+	+s(instrument1)
+.instrument_2
+	+s(instrument2) 
+.instrument_3
+	+s(instrument3) 
+.instrument_4
+	+s(instrument4)
+	
+	
 
 
 
@@ -553,9 +602,56 @@ body
 	+clr
 	.ui-datepicker-group
 		float: left
-		
-
-
+		width: 170px
+		font-family: Arial, sans-serif 
+		font-size: 12px
+		color: #FFF 
+		a
+			text-decoration: none
+			color: #FFF 
+		th
+			font-weight: normal
+	.ui-datepicker-calendar
+		a, span
+			display: block
+			width: 22px
+			height: 22px
+			border-radius: 50%
+			text-align: center
+			line-height: 22px
+	.ui-datepicker-week-end
+		span, a
+			color: #fff701 
+	.ui-state-active
+		background: red 
+	.ui-state-disabled
+		span, a
+			opacity: .3 
+	.ui-datepicker-title
+		padding-bottom: 5px
+		text-align: left
+		line-height: 33px
+		font-size: 14px
+	.ui-datepicker-group-first
+		margin-right: 20px
+		.ui-datepicker-title
+			text-align: right
+	.ui-datepicker-header
+		position: relative
+		font-weight: bold
+		font-size: 14px
+	.ui-datepicker-prev, .ui-datepicker-next
+		position: absolute
+		top: 0
+		cursor: pointer
+		span
+			display: none
+	.ui-datepicker-prev
+		left: 0
+		+s(dp-prev)
+	.ui-datepicker-next
+		right: 0
+		+s(dp-next)
 
 
 
