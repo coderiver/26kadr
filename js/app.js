@@ -65,13 +65,13 @@ var app = $.sammy(function () {
         'who': null,
         '_class': null,
         'directions': [],
-        'specialities': [],
+        'speciality': null,
         'sp': null
     }, step_to_user_choose_mapper = {
         1: 'who',
         2: '_class',
         3: 'directions',
-        4: 'specialities',
+        4: 'speciality',
         5: 'sp'
     };
 
@@ -80,10 +80,12 @@ var app = $.sammy(function () {
     var from_speciality_page = false;
 
     if (!_.isUndefined($.cookie(COOKIE_SPECIALITY))) {
-        user_choose.directions = [1]; // fake!
-        user_choose.specialities = [$.cookie(COOKIE_SPECIALITY)];
-        $.removeCookie(COOKIE_SPECIALITY);
-        from_speciality_page = true;
+        user_choose.speciality = parseInt($.cookie(COOKIE_SPECIALITY));
+        if (!isNaN(user_choose.speciality)){
+            user_choose.directions = [1]; // fake!
+            $.removeCookie(COOKIE_SPECIALITY);
+            from_speciality_page = true;
+        }
     }
     //
 
@@ -190,15 +192,8 @@ var app = $.sammy(function () {
 
     // **** step 4 ****
     var init_choose_specialities = function () {
-        $('#form-choose-specialities input[type="checkbox"]').on('click', function () {
-
-            if (this.checked) {
-                user_choose.specialities.push($(this).val());
-            } else {
-                user_choose.specialities = _.without(user_choose.specialities, $(this).val());
-            }
-
-            user_choose.specialities = _.uniq(user_choose.specialities);
+        $('#form-choose-specialities input[type="radio"]').on('click', function () {
+            user_choose.speciality = $(this).val();
             clear_next_steps(4);
         });
     };
@@ -229,7 +224,7 @@ var app = $.sammy(function () {
             }
 
             html += '<label class="choicer">\
-                <input type="checkbox" value="' + id + '">\
+                <input type="radio" name="speciality" value="' + id + '">\
                     <span class="choicer__text">\
                         <span class="choicer__bg"><span>' + title + '</span><i></i></span>\
                     </span>\
@@ -243,15 +238,12 @@ var app = $.sammy(function () {
         $container.append(html);
         init_choose_specialities();
 
-        _.each(user_choose.specialities, function (id) {
-            var $checkbox = $('#form-choose-specialities input[type=checkbox][value=' + id + ']');
-
-            if ($checkbox.length) {
-                $checkbox.attr('checked', true);
-            } else {
-                delete user_choose.specialities[id];
-            }
-        });
+        var $radio = $('#form-choose-specialities input[type=radio][value=' + user_choose.speciality + ']');
+        if ($radio.length) {
+            $radio.attr('checked', true);
+        } else {
+            user_choose.speciality = null;
+        }
     };
 
     // step 5
@@ -262,9 +254,7 @@ var app = $.sammy(function () {
     };
     step_handlers.step5 = function () {
         var struct_deps = [];
-        _.each(user_choose.specialities, function (speciality_id) {
-            struct_deps.push(_data.specialities_to_sp[speciality_id]);
-        });
+        struct_deps.push(_data.specialities_to_sp[user_choose.speciality]);
         struct_deps = _.unique(_.flatten(struct_deps)).sort();
 
         var $container = $('#form-choose-sp');
@@ -300,25 +290,13 @@ var app = $.sammy(function () {
     // **** step 6 ****
     step_handlers.step6 = function () {
         var $container = $('#speciality-sp-result');
-        var specialities = [];
-        _.each(user_choose.specialities, function (speciality_id) {
-            if (_.contains(_data.specialities_to_sp[speciality_id], parseInt(user_choose.sp))) {
-                specialities.push(speciality_id);
-            }
-        });
-        specialities = _.unique(specialities);
+        var _speciality_title = null;
 
+        if (_.contains(_data.specialities_to_sp[user_choose.speciality], parseInt(user_choose.sp))) {
+            _speciality_title = _specialities[user_choose.speciality];
+        }
         $container.empty();
-
-        var total = specialities.length;
-
-        _.each(specialities, function (id, i) {
-            $container.append(_specialities[id] + '<br>');
-            if ((i + 1) < total) {
-                $container.append('<em>или</em>');
-            }
-        });
-
+        $container.append(_speciality_title);
         $container.append('<em>в отделение колледжа ' + _struct_deps[user_choose.sp].title + '</em>');
     };
 
