@@ -8,12 +8,16 @@
     <link rel="stylesheet" media="screen" href="css/screen.css?v=4" >
     <!--[if IE]><script src="js/html5shiv.js"></script><![endif]-->
     <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/sammy-0.7.5.min.js"></script>
     <script src="js/underscore-min.js"></script>
     <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
     <script src="js/data.js?v=4"></script>
     <script src="js/app.js?v=4"></script>
+
+    <script src="js/common.js"></script>
+
 </head>
 <body>
 <div class="wrapper">
@@ -72,9 +76,10 @@
             <div class="step__title-text"></div>
         </div>
         <ul class="step__text">
-            <li>Колледж Архитектуры<br>Дизайна и Реинжиниринга</li>
-            <li>В нашем колледже представлены 28 специальностей<br>и профессий ! Есть из чего выбрать!</li>
+            <li class="js-ttip" data-text="Творческая и интересная специальность." data-link="#" data-size="(pdf, 40 кб)">Колледж Архитектуры<br>Дизайна и Реинжиниринга</li>
+            <li class="js-ttip" data-text="Творческая и интересная специальность, развивающая особое видение пространства, его возможностей и способов его изменения в лучшую сторону." data-link="#" data-size="(pdf, 40 кб)">В нашем колледже представлены 28 специальностей<br>и профессий ! Есть из чего выбрать!</li>
         </ul>
+
         <div class="sex">
             <div class="sex__row">
                 <a class="sex__item js-next" href="#/step/2" onclick="choose_who('boy');">
@@ -264,21 +269,21 @@
         <div class="step__form">
             <label class="field">
                 <span class="field__label">ФИО</span>
-						<span class="field__el">
-							<input type="text" style="width: 290px">
-						</span>
+				<span class="field__el">
+					<input type="text" style="width: 290px">
+				</span>
             </label>
             <label class="field">
                 <span class="field__label">Телефон</span>
-						<span class="field__el">
-							<input type="text" style="width: 190px">
-						</span>
+				<span class="field__el">
+					<input type="text" style="width: 190px">
+				</span>
             </label>
             <label class="field">
                 <span class="field__label">Адрес</span>
-						<span class="field__el">
-							<input type="text" style="width: 340px">
-						</span>
+				<span class="field__el">
+					<input type="text" style="width: 340px">
+				</span>
             </label>
         </div>
         <div class="step__next">
@@ -318,6 +323,28 @@
 </div>
 </div>
 
+<!-- tooltip -->
+<div class="ttip js-ttip-template">
+    <div class="ttip__in">
+        <div class="ttip__text"></div>
+        <div class="ttip__load">
+            <a href="">Полное описание</a>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- /tooltip -->
+
+<!-- popup -->
+<div class="popup">
+    <div class="popup__in">
+        <button class="popup__close"></button>
+        <div class="popup__title popup__title_calendar"></div>
+        <div class="dp js-dp">
+            
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

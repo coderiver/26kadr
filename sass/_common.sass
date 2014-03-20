@@ -457,6 +457,36 @@ body
 
 
 
+.ttip
+	display: none
+	position: absolute
+	width: 260px
+	padding-bottom: 30px
+	z-index: 1900 
+.ttip__in
+	position: relative
+	padding: 20px 25px
+	background: #000  
+	font-size: 16px
+	&:after
+		content: ""
+		position: absolute
+		top: 100%
+		left: 25px
+		+arr(30,30,#000,tr)
+.ttip__text
+	margin-bottom: 10px
+	color: #FFF
+	line-height: 1
+	font-style: italic
+.ttip__load
+	font-style: italic
+	a
+		color: #f7f002
+	span
+		color: #9e9e9e 
+
+
 
 .cloud
 	position: absolute
@@ -478,6 +508,74 @@ body
 	display: inline-block
 	+s(cloud-author)
 	vertical-align: top
+
+
+
+
+
+.popup
+	display: none
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	background: rgba(255,255,255,.5)
+	text-align: center
+	vertical-align: middle
+	z-index: 2000
+.popup__in
+	position: absolute
+	top: 50%
+	left: 50%
+	width: 500px - 140px
+	height: 500px - 140px
+	padding: 70px
+	margin: -250px 0 0 -250px
+	background: url(../img/popup-bg.jpg) no-repeat 
+	border-radius: 50%
+	text-align: center
+.popup__close
+	position: absolute
+	top: 5px
+	right: 80px
+	+s(popup-close)
+.popup__title
+	display: inline-block
+.popup__title_calendar
+	+s(popup-title-calendar)
+
+
+
+
+
+.dp
+	+clr
+	.ui-datepicker-group
+		float: left
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
