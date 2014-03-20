@@ -65,14 +65,43 @@ var app = $.sammy(function () {
         'who': null,
         '_class': null,
         'directions': [],
-        'specialities': [],
+        'speciality': null,
         'sp': null
     }, step_to_user_choose_mapper = {
         1: 'who',
         2: '_class',
         3: 'directions',
-        4: 'specialities',
-        5: 'sp'
+        4: 'speciality',
+        5: 'sp',
+        6: 'sp'
+    };
+
+    // if from speciality page
+    var COOKIE_SPECIALITY = 'spec';
+    var from_speciality_page = false;
+
+    if (!_.isUndefined($.cookie(COOKIE_SPECIALITY))) {
+        user_choose.speciality = parseInt($.cookie(COOKIE_SPECIALITY));
+        if (!isNaN(user_choose.speciality)){
+            user_choose.directions = [1]; // fake!
+            $.removeCookie(COOKIE_SPECIALITY);
+            from_speciality_page = true;
+        }
+    }
+    //
+
+    var clear_next_steps = function (step) {
+        if (from_speciality_page) {
+            return false;
+        }
+        for (var i = (step + 1); i <= 5; i++) {
+            var choose_name = step_to_user_choose_mapper[i];
+            if (_.isArray(user_choose[choose_name])) {
+                user_choose[choose_name] = [];
+            } else {
+                user_choose[choose_name] = null;
+            }
+        }
     };
 
     window.user_choose = user_choose;
@@ -96,6 +125,7 @@ var app = $.sammy(function () {
     var init_choose_class = function () {
         $('#form-choose-class input[type="radio"]').on('click', function () {
             user_choose._class = $(this).val();
+            clear_next_steps(2);
         });
     };
 
@@ -116,6 +146,7 @@ var app = $.sammy(function () {
             }
 
             user_choose.directions = _.uniq(user_choose.directions);
+            clear_next_steps(3);
         });
 
         _.each(user_choose.directions, function (id) {
@@ -162,15 +193,9 @@ var app = $.sammy(function () {
 
     // **** step 4 ****
     var init_choose_specialities = function () {
-        $('#form-choose-specialities input[type="checkbox"]').on('click', function () {
-
-            if (this.checked) {
-                user_choose.specialities.push($(this).val());
-            } else {
-                user_choose.specialities = _.without(user_choose.specialities, $(this).val());
-            }
-
-            user_choose.specialities = _.uniq(user_choose.specialities);
+        $('#form-choose-specialities input[type="radio"]').on('click', function () {
+            user_choose.speciality = $(this).val();
+            clear_next_steps(4);
         });
     };
     step_handlers.step4 = function () {
@@ -200,7 +225,7 @@ var app = $.sammy(function () {
             }
 
             html += '<label class="choicer">\
-                <input type="checkbox" value="' + id + '">\
+                <input type="radio" name="speciality" value="' + id + '">\
                     <span class="choicer__text">\
                         <span class="choicer__bg"><span>' + title + '</span><i></i></span>\
                     </span>\
@@ -214,15 +239,12 @@ var app = $.sammy(function () {
         $container.append(html);
         init_choose_specialities();
 
-        _.each(user_choose.specialities, function (id) {
-            var $checkbox = $('#form-choose-specialities input[type=checkbox][value=' + id + ']');
-
-            if ($checkbox.length) {
-                $checkbox.attr('checked', true);
-            } else {
-                delete user_choose.specialities[id];
-            }
-        });
+        var $radio = $('#form-choose-specialities input[type=radio][value=' + user_choose.speciality + ']');
+        if ($radio.length) {
+            $radio.attr('checked', true);
+        } else {
+            user_choose.speciality = null;
+        }
     };
 
     // step 5
@@ -233,9 +255,7 @@ var app = $.sammy(function () {
     };
     step_handlers.step5 = function () {
         var struct_deps = [];
-        _.each(user_choose.specialities, function (speciality_id) {
-            struct_deps.push(_data.specialities_to_sp[speciality_id]);
-        });
+        struct_deps.push(_data.specialities_to_sp[user_choose.speciality]);
         struct_deps = _.unique(_.flatten(struct_deps)).sort();
 
         var $container = $('#form-choose-sp');
@@ -271,25 +291,13 @@ var app = $.sammy(function () {
     // **** step 6 ****
     step_handlers.step6 = function () {
         var $container = $('#speciality-sp-result');
-        var specialities = [];
-        _.each(user_choose.specialities, function (speciality_id) {
-            if (_.contains(_data.specialities_to_sp[speciality_id], parseInt(user_choose.sp))) {
-                specialities.push(speciality_id);
-            }
-        });
-        specialities = _.unique(specialities);
+        var _speciality_title = null;
 
+        if (_.contains(_data.specialities_to_sp[user_choose.speciality], parseInt(user_choose.sp))) {
+            _speciality_title = _specialities[user_choose.speciality];
+        }
         $container.empty();
-
-        var total = specialities.length;
-
-        _.each(specialities, function (id, i) {
-            $container.append(_specialities[id] + '<br>');
-            if ((i + 1) < total) {
-                $container.append('<em>или</em>');
-            }
-        });
-
+        $container.append(_speciality_title);
         $container.append('<em>в отделение колледжа ' + _struct_deps[user_choose.sp].title + '</em>');
     };
 
@@ -309,9 +317,9 @@ var app = $.sammy(function () {
     this.before({except: {path: ['#/step/0', '#/step/1']}}, function () {
         var step = this.params['step'], ret = true;
 
-        step = step - 1;
+        var prev_step = step - 1;
 
-        var choose_name = step_to_user_choose_mapper[step];
+        var choose_name = step_to_user_choose_mapper[prev_step];
 
         if (_.isArray(user_choose[choose_name]) && user_choose[choose_name].length == 0) {
             ret = false;
@@ -320,8 +328,15 @@ var app = $.sammy(function () {
         }
 
         if (!ret) {
-            this.redirect('#/step/' + step);
+            this.redirect('#/step/' + prev_step);
         }
+
+        if (from_speciality_page && (step == 3 || step == 4)) {
+            this.redirect('#/step/5');
+            from_speciality_page = false;
+            return false;
+        }
+
         return ret;
     });
 
