@@ -75,6 +75,32 @@ var app = $.sammy(function () {
         5: 'sp'
     };
 
+    // if from speciality page
+    var COOKIE_SPECIALITY = 'spec';
+    var from_speciality_page = false;
+
+    if (!_.isUndefined($.cookie(COOKIE_SPECIALITY))) {
+        user_choose.directions = [1]; // fake!
+        user_choose.specialities = [$.cookie(COOKIE_SPECIALITY)];
+        $.removeCookie(COOKIE_SPECIALITY);
+        from_speciality_page = true;
+    }
+    //
+
+    var clear_next_steps = function (step) {
+        if (from_speciality_page) {
+            return false;
+        }
+        for (var i = (step + 1); i <= 5; i++) {
+            var choose_name = step_to_user_choose_mapper[i];
+            if (_.isArray(user_choose[choose_name])) {
+                user_choose[choose_name] = [];
+            } else {
+                user_choose[choose_name] = null;
+            }
+        }
+    };
+
     window.user_choose = user_choose;
 
     //var _classes = [9, 10, 11];
@@ -96,6 +122,7 @@ var app = $.sammy(function () {
     var init_choose_class = function () {
         $('#form-choose-class input[type="radio"]').on('click', function () {
             user_choose._class = $(this).val();
+            clear_next_steps(2);
         });
     };
 
@@ -116,6 +143,7 @@ var app = $.sammy(function () {
             }
 
             user_choose.directions = _.uniq(user_choose.directions);
+            clear_next_steps(3);
         });
 
         _.each(user_choose.directions, function (id) {
@@ -171,6 +199,7 @@ var app = $.sammy(function () {
             }
 
             user_choose.specialities = _.uniq(user_choose.specialities);
+            clear_next_steps(4);
         });
     };
     step_handlers.step4 = function () {
@@ -309,9 +338,9 @@ var app = $.sammy(function () {
     this.before({except: {path: ['#/step/0', '#/step/1']}}, function () {
         var step = this.params['step'], ret = true;
 
-        step = step - 1;
+        var prev_step = step - 1;
 
-        var choose_name = step_to_user_choose_mapper[step];
+        var choose_name = step_to_user_choose_mapper[prev_step];
 
         if (_.isArray(user_choose[choose_name]) && user_choose[choose_name].length == 0) {
             ret = false;
@@ -320,8 +349,16 @@ var app = $.sammy(function () {
         }
 
         if (!ret) {
-            this.redirect('#/step/' + step);
+            this.redirect('#/step/' + prev_step);
         }
+
+        if (from_speciality_page && (step == 3 || step == 4)) {
+            console.debug('yaaa', step);
+            this.redirect('#/step/5');
+            from_speciality_page = false;
+            return false;
+        }
+
         return ret;
     });
 
