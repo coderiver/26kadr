@@ -1,26 +1,5 @@
 $(document).ready(function() {
 
-function nav () {
-	var item = $('.step');
-	var btn = $('.js-next');
-	btn.on('click', function(){
-		var attr = $(this).attr('href');
-		item.removeClass('is-active');
-		btn.removeClass('is-active');
-		$('#'+attr).addClass('is-active');
-		$(this).addClass('is-active');
-		btn.each(function(){
-			var btn_attr = $(this).attr('href');
-			if (attr == btn_attr) {
-				$(this).addClass('is-active');
-			};
-		});
-		return false;
-	});
-}
-nav();
-
-
 // datepicker
 var dp = $('.js-dp');
 if (dp.length) {
@@ -31,12 +10,16 @@ if (dp.length) {
 
 // tooltip
 function tooltip () {
+    var hideTimeOut;
 	var el = $('.js-ttip'),
 			template = $('.js-ttip-template'),
 			template_text = template.find('.ttip__text'),
 			template_link = template.find('.ttip__load a'),
 			template_size = template.find('.ttip__load span');
 	el.hover(function(){
+        if (hideTimeOut){
+            clearTimeout(hideTimeOut);
+        }
 		var text = $(this).attr('data-text'),
 				link = $(this).attr('data-link'),
 				size = $(this).attr('data-size'),
@@ -49,11 +32,16 @@ function tooltip () {
 		template.show();
 		var height = template.height();
 		template.css({'top': top - height - el_height + 10, 'left': left});
-		template
 	}, function(){
-		//template.hide();
+        hideTimeOut = setTimeout(function(){
+            template.hide();
+        }, 500);
 	});
-	template.hover(function(){},function(){
+	template.hover(function(){
+        if (hideTimeOut){
+            clearTimeout(hideTimeOut);
+        }
+    },function(){
 		$(this).hide();
 	})
 }
