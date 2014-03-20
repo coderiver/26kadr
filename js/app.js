@@ -72,7 +72,8 @@ var app = $.sammy(function () {
         2: '_class',
         3: 'directions',
         4: 'speciality',
-        5: 'sp'
+        5: 'sp',
+        6: 'sp'
     };
 
     // if from speciality page
@@ -331,7 +332,6 @@ var app = $.sammy(function () {
         }
 
         if (from_speciality_page && (step == 3 || step == 4)) {
-            console.debug('yaaa', step);
             this.redirect('#/step/5');
             from_speciality_page = false;
             return false;
