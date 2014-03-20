@@ -226,6 +226,15 @@ body
 	position: absolute
 	right: 35px
 	bottom: 20px
+	z-index: 100 
+.footer__phone
+	position: absolute
+	bottom: -20px
+	left: 0
+	padding: 0 10px
+	background: #0f1a25
+	font-size: 18px
+	color: #fff  
 .copyright, .social
 	display: inline-block
 	vertical-align: middle
@@ -449,9 +458,26 @@ body
 
 
 
-
-
-
+.cloud
+	position: absolute
+	top: 0
+	right: 0
+	width: 325px
+	height: 145px
+	padding: 20px 20px 0 90px
+	background: url(../img/cloud.png) 
+	+box
+	text-align: center
+	z-index: 20 
+.cloud__text
+	margin-bottom: 10px
+	line-height: 1
+	font-size: 14px
+	color: #FFF 
+.cloud__author
+	display: inline-block
+	+s(cloud-author)
+	vertical-align: top
 
 
 
