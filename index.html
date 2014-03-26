@@ -5,19 +5,20 @@
     <meta charset="utf-8">
     <title>Куда пойти учиться после ШКОЛЫ?</title>
     <meta name="viewport" content="initial-scale=1"/>
-    <link rel="stylesheet" media="screen" href="css/screen.css?v=4" >
+    <meta name="csrf-token" content="joWaSOVlwrY0FRMrAVP7qoIRAyXai8mHTS7BNGeS"/>
+    <link rel="stylesheet" media="screen" href="css/screen.css?v=12" >
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <!--[if IE]><script src="js/html5shiv.js"></script><![endif]-->
     <script src="js/jquery.js"></script>
-    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js?v=12"></script>
     <script src="js/jquery.cookie.js"></script>
+    <script src="js/jquery.form.min.js"></script>
     <script src="js/sammy-0.7.5.min.js"></script>
     <script src="js/underscore-min.js"></script>
     <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
-    <script src="js/data.js?v=4"></script>
-    <script src="js/app.js?v=4"></script>
-
-    <script src="js/common.js"></script>
-
+    <script src="js/data.js?v=12"></script>
+    <script src="js/app.js?v=12"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -55,9 +56,9 @@
 </aside>
 <div class="section">
 <!-- cloud -->
-<div class="cloud">
-    <div class="cloud__text">Нелегко встретить человека, который, отдав учению три года жизни, не мечтал бы занять высокий пост.</div>
-    <div class="cloud__author"></div>
+<div class="cloud" id="js-cloud">
+    <div class="cloud__text">В колледже работает Центр молодежного инновационного творчества (лаборатория 3d моделирования и прототипирования) для реализации студентами своих проектных и научных разработок.</div>
+    <!--<div class="cloud__author"></div>-->
 </div>
 <!-- 0 -->
 <div id="step_0" class="step step_0 is-active">
@@ -76,8 +77,8 @@
             <div class="step__title-text"></div>
         </div>
         <ul class="step__text">
-            <li class="js-ttip" data-text="Творческая и интересная специальность." data-link="#" data-size="(pdf, 40 кб)">Колледж Архитектуры<br>Дизайна и Реинжиниринга</li>
-            <li class="js-ttip" data-text="Творческая и интересная специальность, развивающая особое видение пространства, его возможностей и способов его изменения в лучшую сторону." data-link="#" data-size="(pdf, 40 кб)">В нашем колледже представлены 28 специальностей<br>и профессий ! Есть из чего выбрать!</li>
+            <li>Колледж Архитектуры<br>Дизайна и Реинжиниринга</li>
+            <li>В нашем колледже представлены 28 специальностей<br>и профессий ! Есть из чего выбрать!</li>
         </ul>
 
         <div class="sex">
@@ -94,12 +95,13 @@
                         <div class="btn"><span>девушка</span></div>
                     </div>
                 </a>
+                <!--
                 <a class="sex__item js-next" href="#/step/2" onclick="choose_who('parent');">
                     <i class="sex__parent"></i>
                     <div class="sex__btn btn-animation">
                         <div class="btn"><span>родитель</span></div>
                     </div>
-                </a>
+                </a>-->
                 <a class="sex__item js-next" href="#/step/2" onclick="choose_who('ufo');">
                     <i class="sex__guest"></i>
                     <div class="sex__btn btn-animation">
@@ -121,58 +123,58 @@
         <div class="step__description"><p>(эта информация необходима нам, чтобы подобрать</p><br><span>специальности, подходящие именно тебе)</span></div>
         <div class="step__line"><i></i></div>
         <div class="step__form" id="form-choose-class">
-            <!--<div class="step__form-column">
+            <div class="step__form-column">
                 <label class="choicer">
                     <input type="radio" name="group" value="7">
-						<span class="choicer__text">
-							<strong>7</strong>
-							<span class="choicer__bg"><span>класс</span><i></i></span>
-						</span>
+                        <span class="choicer__text">
+                            <strong>7</strong>
+                            <span class="choicer__bg"><span>класс</span><i></i></span>
+                        </span>
                 </label>
                 <label class="choicer">
                     <input type="radio" name="group" value="8">
-						<span class="choicer__text">
-							<strong>8</strong>
-							<span class="choicer__bg"><span>класс</span><i></i></span>
-						</span>
+                        <span class="choicer__text">
+                            <strong>8</strong>
+                            <span class="choicer__bg"><span>класс</span><i></i></span>
+                        </span>
                 </label>
-            </div>-->
+            </div>
             <div class="step__form-column">
                 <label class="choicer">
                     <input type="radio" name="group" value="9">
-					<span class="choicer__text">
-						<strong>9</strong>
-						<span class="choicer__bg"><span>класс</span><i></i></span>
-					</span>
+                    <span class="choicer__text">
+                        <strong>9</strong>
+                        <span class="choicer__bg"><span>класс</span><i></i></span>
+                    </span>
                 </label>
-            </div>
-            <div class="step__form-column">
                 <label class="choicer">
                     <input type="radio" name="group" value="10">
-					<span class="choicer__text">
-						<strong>10</strong>
-						<span class="choicer__bg"><span>класс</span><i></i></span>
-					</span>
+                    <span class="choicer__text">
+                        <strong>10</strong>
+                        <span class="choicer__bg"><span>класс</span><i></i></span>
+                    </span>
                 </label>
             </div>
+
             <div class="step__form-column">
                 <label class="choicer">
                     <input type="radio" name="group" value="11">
-					<span class="choicer__text">
-						<strong>11</strong>
-						<span class="choicer__bg"><span>класс</span><i></i></span>
-					</span>
+                    <span class="choicer__text">
+                        <strong>11</strong>
+                        <span class="choicer__bg"><span>класс</span><i></i></span>
+                    </span>
                 </label>
 
                 <label class="choicer choicer_mod">
                     <input type="radio" name="group" value="other">
-					<span class="choicer__text">
-						<span class="choicer__bg"><span>КРО</span><i></i></span>
-					</span>
+                    <span class="choicer__text">
+                        <span class="choicer__bg"><span>КРО</span><i></i></span>
+                    </span>
                 </label>
             </div>
         </div>
         <div class="step__next">
+            <a class="btn btn_back js-back btn-animation" href="#/step/1"><span>назад</span></a>
             <a class="btn js-next btn-animation" href="#/step/3"><span>дальше</span></a>
         </div>
     </div>
@@ -191,6 +193,7 @@
 
         </div>
         <div class="step__next">
+            <a class="btn btn_back js-back btn-animation" href="#/step/2"><span>назад</span></a>
             <a class="btn js-next btn-animation" href="#/step/4"><span>дальше</span></a>
         </div>
     </div>
@@ -208,6 +211,7 @@
 
         </div>
         <div class="step__next">
+            <a class="btn btn_back js-back btn-animation" href="#/step/3"><span>назад</span></a>
             <a class="btn js-next btn-animation" href="#/step/5"><span>дальше</span></a>
         </div>
     </div>
@@ -241,6 +245,7 @@
             </div>
         </div>
         <div class="step__next">
+            <a class="btn btn_back js-back btn-animation" href="#/step/4"><span>назад</span></a>
             <a class="btn js-next btn-animation" href="#/step/6"><span>дальше</span></a>
         </div>
     </div>
@@ -256,9 +261,10 @@
         <div class="step__description" id="speciality-sp-result"></div>
         <div class="step__line"><i></i></div>
         <div class="step__next">
-            <a class="btn btn_big js-next btn-animation" href="#/step/7"><span>Записаться на<br>день открытых<br>дверей</span></a>
-            <a class="btn btn_big js-next btn-animation" href="#/step/7"><span>Подать<br>онлайн<br>заявку</span></a>
-            <a class="btn btn_big js-next btn-animation" href="#/step/7"><span>перезвонить<br>мне</span></a>
+            <a class="btn btn_back js-back btn-animation" href="#/step/5"><span>назад</span></a>
+            <a class="btn btn_big js-next btn-animation" href="#/step/7" onclick="step6_choose('opendays');"><span>Записаться на<br>день открытых<br>дверей</span></a>
+            <a class="btn btn_big js-next btn-animation" href="#/step/7" onclick="step6_choose('onlineform');"><span>Подать<br>онлайн<br>заявку</span></a>
+            <a class="btn btn_big js-next btn-animation" href="#/step/7" onclick="step6_choose('callback');"><span>перезвонить<br>мне</span></a>
         </div>
     </div>
 </div>
@@ -273,27 +279,52 @@
         <div class="step__description" id="sp-opendays-result"></div>
         <div class="step__line"><i></i></div>
         <div class="step__form">
-            <label class="field">
-                <span class="field__label">ФИО</span>
-				<span class="field__el">
-					<input type="text" style="width: 290px">
-				</span>
-            </label>
-            <label class="field">
-                <span class="field__label">Телефон</span>
-				<span class="field__el">
-					<input type="text" style="width: 190px">
-				</span>
-            </label>
-            <label class="field">
-                <span class="field__label">Адрес</span>
-				<span class="field__el">
-					<input type="text" style="width: 340px">
-				</span>
-            </label>
+            <form method="post" action="/form_process" id="form-opendays">
+
+                <input type="hidden" name="type" id="js-hidden-type">
+
+                <input type="hidden" name="user_choose[who]" id="js-hidden-who">
+                <input type="hidden" name="user_choose[_class]" id="js-hidden-_class">
+                <input type="hidden" name="user_choose[directions]" id="js-hidden-directions">
+                <input type="hidden" name="user_choose[speciality]" id="js-hidden-speciality">
+                <input type="hidden" name="user_choose[sp]" id="js-hidden-sp">
+
+                <label class="field js-from-group-opendaydate" style="display: none">
+                    <span class="field__label">Дата *</span>
+                    <span class="field__el">
+                        <input type="text" style="width: 100px" required disabled="disabled" id="js-field-opendays"> <em><a href="#" class="field__el-calendar" id="js-open-opendays">выбрать дату</a></em>
+                        <input type="hidden" name="opendaydate" id="js-hidden-opendays">
+                    </span>
+                </label>
+                <label class="field">
+                    <span class="field__label">ФИО *</span>
+                    <span class="field__el">
+                        <input name="fio" type="text" required style="width: 290px">
+                    </span>
+                </label>
+                <label class="field">
+                    <span class="field__label">Телефон *</span>
+                    <span class="field__el">
+                        <input name="phone" type="text" required style="width: 190px">
+                    </span>
+                </label>
+                <label class="field js-from-group-email">
+                    <span class="field__label">E-mail</span>
+                    <span class="field__el">
+                        <input name="email" type="text" style="width: 190px">
+                    </span>
+                </label>
+                <label class="field">
+                    <span class="field__label">Комментарий</span>
+                    <span class="field__el">
+                        <input name="comment" type="text" style="width: 290px">
+                    </span>
+                </label>
+            </form>
         </div>
         <div class="step__next">
-            <a class="btn btn_big  btn-animation" href="#/step/8"><span>записаться</span></a>
+            <a class="btn btn_back js-back btn-animation" href="#/step/6"><span>назад</span></a>
+            <a class="btn btn_big  btn-animation" href="#/step/8" onclick="return step6_check();"><span>записаться</span></a>
         </div>
     </div>
 </div>
@@ -305,11 +336,8 @@
         <div class="step__description">
             Отличный выбор!
             <div class="step__line"><i></i></div>
-
-            <em>Мы обязательно свяжемся с тобой и пригласим пообщаться в ближайшее время!<br>
-                Если у тебя остались какие-то вопросы, звони: <a href="tel:+74996537077">+7 (499) 653-70-77</a></em>
+            <em id="js-step8-text"></em>
         </div>
-
         <div class="step__next">
             <a class="btn btn_big  btn-animation" href="#/step/0"><span>к началу!</span></a>
         </div>
@@ -334,7 +362,7 @@
     <div class="ttip__in">
         <div class="ttip__text"></div>
         <div class="ttip__load">
-            <a href="">Полное описание</a>
+            <a href="" target="_blank">Полное описание</a>
             <span></span>
         </div>
     </div>
@@ -342,15 +370,19 @@
 <!-- /tooltip -->
 
 <!-- popup -->
-<div class="popup">
+<div class="popup" id="js-popup-overlay" style="display: none">
     <!-- calendar -->
-    <div class="popup__in" style="display: none">
-        <button class="popup__close"></button>
+    <div class="popup__in" id="js-calendar-popup" style="display: none1">
+        <button class="popup__close js-popup-close"></button>
         <div class="popup__title popup__title_calendar"></div>
-        <div class="dp js-dp"></div>
+        <div class="dp" id="js-dp"></div>
+        <div class="popup__link">
+            <a href="#" class="js-popup-close">Выбрать</a>
+        </div>
     </div>
     <!--  -->
-    <div class="popup__in">
+    <div class="popup__in" id="js-step8-popup" style="display: none">
+        <button class="popup__close"></button>
         <div class="popup__title popup__title_final"></div>
         <div class="popup__line"><i></i></div>
         <div class="popup__text">Поздравляем Тебя с первым и очень важным шагом к будущей карьере</div>
@@ -361,7 +393,10 @@
     </div>
 </div>
 
-
-
+<script>
+    yaCounter21615259 = {reachGoal:function(goal){
+        console.log('yaCounter21615259.reachGoal: '+goal);
+    }};
+</script>
 </body>
 </html>
