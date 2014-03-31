@@ -6,7 +6,7 @@ function map_route(struct_deps) {
     yandex_map_sp_collection.removeAll();
     _.each(struct_deps, function (id, i) {
         yandex_map_sp_collection.add(new ymaps.Placemark(_struct_deps[id].center, {}, {
-            "iconImageHref": "img/map/sp-" + id + ".png",
+            "iconImageHref": "/assets/priem/img/map/sp-" + id + ".png",
             "iconImageSize": [
                 45,
                 39
@@ -274,6 +274,8 @@ var app = $.sammy(function () {
     window.choose_who = function (who) {
         user_choose.who = who;
         clear_next_steps(1);
+
+        $('.bilbo').removeClass('bilbo__boy bilbo__girl bilbo__parent bilbo__ufo').addClass('bilbo__'+user_choose.who);
     };
 
 
@@ -452,14 +454,6 @@ var app = $.sammy(function () {
             user_choose.sp = $(this).val();
             $.getJSON('/opendays.json', {structuraldepartment_id: user_choose.sp}, function (json) {
                 current_opendays = json;
-                if (current_opendays.length > 0) {
-                    var _d = current_opendays[0].split('-');
-                    _d[0] = String('0' + _d[0]).slice(-2);
-                    _d[1] = String('0' + _d[1]).slice(-2);
-                    _d = _d.join('.');
-
-                    on_select_openday(_d);
-                }
             });
         });
     };
@@ -516,10 +510,19 @@ var app = $.sammy(function () {
 
         $('.js-from-group-opendaydate').hide();
         $('.js-from-group-email').show();
+        $('#js-hidden-opendays').val('');
 
         switch (what) {
             case 'opendays':
                 $('.js-from-group-opendaydate').show();
+                if ($('#js-hidden-opendays').val() == '' && current_opendays.length > 0) {
+                    var _d = current_opendays[0].split('-');
+                    _d[0] = String('0' + _d[0]).slice(-2);
+                    _d[1] = String('0' + _d[1]).slice(-2);
+                    _d = _d.join('.');
+
+                    on_select_openday(_d);
+                }
                 break;
             case 'callback':
                 $('.js-from-group-email').hide();
@@ -575,7 +578,7 @@ var app = $.sammy(function () {
             success: function (json) {
                 if (json.success) {
                     try {
-                        yaCounter21615259.reachGoal('step' + step7form);
+                        yaCounter21615259.reachGoal('step7' + step7form);
                     } catch (e){}
                     window.location.href = '/#/step/8';
                 } else {

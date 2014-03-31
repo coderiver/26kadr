@@ -12,7 +12,7 @@
 	right: 0
 	bottom: 0
 	&.is-active
-		z-index: 10 
+		z-index: 10
 		.step__ask,
 		.step__school,
 		.step__go,
@@ -20,12 +20,12 @@
 		.step__title-text,
 		.step__form,
 		.step__description,
-		.step__line, 
+		.step__line,
 		.step__next,
 		.step__text,
 		.sex__item,
 		.bilbo
-			opacity: 1 
+			opacity: 1
 		.step__title-text, .step__title-counter, .step__line, .step__next
 			top: 0
 		.step__text, .sex__item, .step__description, .step__form
@@ -33,7 +33,7 @@
 		&.step_0
 			.step__title
 				top: 45px
-				opacity: 1 
+				opacity: 1
 		&.step_5
 			.step__in
 				left: 50%
@@ -62,14 +62,14 @@
 .step__title-text,
 .step__form,
 .step__description,
-.step__line, 
+.step__line,
 .step__next,
 .step__text,
 .step_0 .step__title,
 .sex__item,
 .bilbo
 	opacity: 0
-	+tr(all .4s ease-out) 
+	+tr(all .4s ease-out)
 
 
 .step__in
@@ -78,7 +78,7 @@
 	left: 50%
 	width: 1000px
 	height: 600px
-	margin: -300px 0 0 -500px 
+	margin: -300px 0 0 -500px
 .step__ask
 	position: absolute
 	top: 500px
@@ -92,7 +92,7 @@
 	width: 841px
 	height: 151px
 	margin-left: 200px
-	background: url(../img/step-0-school.png) no-repeat 0 0 
+	background: url(../img/step-0-school.png) no-repeat 0 0
 .step__go
 	position: absolute
 	top: 365px
@@ -113,7 +113,7 @@
 	-webkit-transform: rotate(-5deg)
 	-moz-transform: rotate(-5deg)
 	-ms-transform: rotate(-5deg)
-	color: #fff701 
+	color: #fff701
 	font-size: 13px
 	line-height: 52px
 	text-align: center
@@ -137,7 +137,7 @@
 	p
 		position: relative
 		display: inline-block
-		z-index: 2 
+		z-index: 2
 	span
 		position: relative
 		display: inline-block
@@ -154,7 +154,7 @@
 			+s(step2-text-left)
 		&:after
 			right: -22px
-			+s(step2-text-right)				
+			+s(step2-text-right)
 .step__line
 	position: relative
 	top: 400px
@@ -172,7 +172,7 @@
 	top: 500px
 	padding-top: 50px
 	text-align: center
-.step__text 
+.step__text
 	position: relative
 	left: -800px
 	padding: 15px 0 25px
@@ -190,7 +190,7 @@
 			text-align: right
 			font-size: 18px
 			text-transform: uppercase
-			+bold 
+			+bold
 
 // 0
 .step_0
@@ -200,7 +200,7 @@
 		left: 50%
 		margin-left: -100px
 		+s(step-0-title)
-	
+
 // 1
 .step_1
 	.step__title-text
@@ -238,11 +238,11 @@
 			top: 4px
 		strong
 			margin-right: 10px
-			letter-spacing: -7px 
+			letter-spacing: -7px
 			font-size: 50px
 		span
-			font-size: 32px 
-			
+			font-size: 32px
+
 // 3
 .step_3
 	.step__title-text
@@ -272,7 +272,7 @@
 	.step__in
 		width: 50%
 		left: 0
-		margin: -300px 0 0 0 
+		margin: -300px 0 0 0
 		+tr(left .2s linear)
 	.step__title, .step__description, .step__line, .step__next
 		text-align: left
@@ -294,7 +294,7 @@
 		left: -50%
 		width: 50%
 		bottom: 0
-		border-right: 6px solid #000 
+		border-right: 6px solid #000
 		background: #FFF
 		+tr(left .2s linear)
 		+box
@@ -303,21 +303,21 @@
 		position: absolute
 		left: 90px
 		right: 90px
-		bottom: 40px 
-		z-index: 20 
+		bottom: 40px
+		z-index: 20
 		.field
 			overflow: hidden
 	.map__btn
 		float: right
 		height: 24px
 		padding: 0 25px
-		margin: 4px 0 0 10px 
-		background: #e5d507 
+		margin: 4px 0 0 10px
+		background: #e5d507
 		+med
 		font-style: italic
 		font-size: 16px
-		color: #000 
-	
+		color: #000
+
 // 6
 .step_6
 	.step__title-text
@@ -330,7 +330,7 @@
 			display: block
 			line-height: 1
 			font-size: 24px
-			
+
 // 7
 .step_7
 	.step__title-text
@@ -342,11 +342,11 @@
 			display: inline-block
 			padding: 0 12px 2px
 			margin-left: 10px
-			background: #E5D607 
+			background: #E5D607
 			font-size: 16px
 			text-decoration: none
-			color: #000 
-			font-style: italic 
+			color: #000
+			font-style: italic
 	.field__el-calendar
 		padding: 0 12px 2px
 		margin-left: 10px
@@ -357,7 +357,7 @@
 		font-style: italic
 	.step__form
 		width: 460px
-		margin: 0 auto 
+		margin: 0 auto
 	.field
 		margin-bottom: 15px
 	.field__label,
@@ -373,15 +373,25 @@
 	position: absolute
 	right: -400px
 	bottom: 100px
-	+s(bilbo)
+.bilbo__boy
+	+s(man1)
+.bilbo__girl
+	+s(man2)
+.bilbo__parent
+	+s(man3)
+.bilbo__ufo
+	+s(man4)
 .bilbo_left
 	top: 50%
 	bottom: auto
 	left: -100px
 	right: auto
 	margin-top: -100px
-	+s(bilbo1)
-
-
-
-
+	&.bilbo__boy
+		+s(man1-leaned)
+	&.bilbo__girl
+		+s(man2-leaned)
+	&.bilbo__parent
+		+s(man3-leaned)
+	&.bilbo__ufo
+		+s(man4-leaned)
