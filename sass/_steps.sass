@@ -23,7 +23,8 @@
 		.step__line, 
 		.step__next,
 		.step__text,
-		.sex__item
+		.sex__item,
+		.bilbo
 			opacity: 1 
 		.step__title-text, .step__title-counter, .step__line, .step__next
 			top: 0
@@ -47,6 +48,10 @@
 		.instrument
 			bottom: 0
 			opacity: 1
+		.bilbo
+			right: -100px
+		.bilbo_left
+			left: 0
 
 
 
@@ -61,7 +66,8 @@
 .step__next,
 .step__text,
 .step_0 .step__title,
-.sex__item
+.sex__item,
+.bilbo
 	opacity: 0
 	+tr(all .4s ease-out) 
 
@@ -363,7 +369,18 @@
 		margin-right: 15px
 		text-align: right
 
-
+.bilbo
+	position: absolute
+	right: -400px
+	bottom: 100px
+	+s(bilbo)
+.bilbo_left
+	top: 50%
+	bottom: auto
+	left: -100px
+	right: auto
+	margin-top: -100px
+	+s(bilbo1)
 
 
 
